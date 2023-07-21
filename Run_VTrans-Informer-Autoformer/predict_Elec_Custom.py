@@ -1,9 +1,13 @@
 import argparse
 import os
 import torch
-from exp.exp_main import Exp_Main_Continue as Exp_Main
 import random
 import numpy as np
+import sys
+
+sys.path.append("..")
+from exp.exp_main import Exp_Main_Continue as Exp_Main
+
 
 fix_seed = 2021
 random.seed(fix_seed)

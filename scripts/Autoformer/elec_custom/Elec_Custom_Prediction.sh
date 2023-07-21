@@ -13,7 +13,7 @@ file_name="Elec_Custom_Prediction"
 for pred_len in 96 192 384 768
 do
 
-    python -u Run_VTrans-Informer-Autoformer/predict_Elec_Custom.py \
+    python -u predict_Elec_Custom.py \
       --is_training 0 \
       --root_path ./dataset/ \
       --file_name $file_name \

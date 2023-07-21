@@ -1,10 +1,7 @@
 import argparse
 import os
 import torch
-import sys
-
-sys.path.append("..")
-from exp.exp_main import Exp_Main_Continue as Exp_Main
+from exp.exp_main import Exp_Main_Freeze as Exp_Main
 import random
 import numpy as np
 
@@ -31,7 +28,7 @@ parser.add_argument(
     "--model",
     type=str,
     required=True,
-    default="Autoformer",
+    default="Transformer",
     help="model name, options: [Autoformer, Informer, Transformer]",
 )
 parser.add_argument(
@@ -184,10 +181,11 @@ Exp = Exp_Main
 if args.is_training:
     for ii in range(args.itr):
         # setting record of experiments
+        data = "ETTh1"
         setting = "{}_{}_{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}_{}".format(
             args.model_id,
             args.model,
-            args.data,
+            data,
             args.features,
             args.seq_len,
             args.label_len,
@@ -207,7 +205,7 @@ if args.is_training:
         data_path = str(args.data_path)
         data_path = data_path[:-4]
         setting2 = setting[(len(data_path)) :]
-        setting = data_path[:-4] + setting2
+        setting = data_path[:-1] + "1" + setting2
 
         exp = Exp(args, setting)  # set experiments
         print(">>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>".format(setting))
@@ -229,11 +227,12 @@ if args.is_training:
 
         torch.cuda.empty_cache()
 else:
+    data = "ETTh1"
     ii = 0
     setting = "{}_{}_{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_fc{}_eb{}_dt{}_{}_{}".format(
         args.model_id,
         args.model,
-        args.data,
+        data,
         args.features,
         args.seq_len,
         args.label_len,

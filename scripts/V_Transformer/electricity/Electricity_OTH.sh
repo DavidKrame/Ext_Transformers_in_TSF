@@ -13,7 +13,7 @@ file_name="Elec_OTH"
 for pred_len in 96 192 384 768
 do
 
-    python -u Run_VTrans-Informer-Autoformer/run_longExp.py \
+    python -u run_longExp.py \
       --is_training 1 \
       --root_path ./dataset/ \
       --file_name $file_name \

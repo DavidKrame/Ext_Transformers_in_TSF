@@ -1,9 +1,6 @@
 import argparse
 import os
 import torch
-import sys
-
-sys.path.append("..")
 from exp.exp_stat import Exp_Main
 import random
 import numpy as np

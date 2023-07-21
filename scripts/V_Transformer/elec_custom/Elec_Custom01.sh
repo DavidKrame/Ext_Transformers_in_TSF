@@ -13,7 +13,7 @@ file_name="Elec_Custom_01"
 for pred_len in 96 192 384 768
 do
 
-    python -u Run_VTrans-Informer-Autoformer/run_longExp.py \
+    python -u run_longExp.py \
       --is_training 1 \
       --file_name $file_name \
       --root_path ./dataset/ \

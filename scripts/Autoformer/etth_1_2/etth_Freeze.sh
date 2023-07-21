@@ -13,7 +13,7 @@ file_name="Etth_Freeze"
 for pred_len in 96 192 384 768
 do
 
-    python -u Run_VTrans-Informer-Autoformer/train_Freeze_ETTh.py \
+    python -u train_Freeze_ETTh.py \
       --is_training 1 \
       --root_path ./dataset/ \
       --file_name $file_name \

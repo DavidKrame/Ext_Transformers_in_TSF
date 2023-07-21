@@ -1,12 +1,10 @@
 import argparse
 import os
 import torch
-import sys
-
-sys.path.append("..")
-from exp.exp_main import Exp_Main_Continue as Exp_Main
 import random
 import numpy as np
+from exp.exp_main import Exp_Main_Continue as Exp_Main
+
 
 fix_seed = 2021
 random.seed(fix_seed)
@@ -207,11 +205,12 @@ for ii in range(args.itr):
     data_path = str(args.data_path)
     data_path = data_path[:-4]
     setting2 = setting[(len(data_path)) :]
-    setting = data_path[:-4] + setting2
+    setting = data_path[:-1] + "1" + setting2
 
     exp = Exp(args, setting)  # set experiments
+    # print(">>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>".format(setting))
+    # exp.train(setting)
 
-    # if not args.train_only:
     print(">>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<".format(setting))
     exp.test(setting)
 

@@ -13,7 +13,7 @@ file_name="Elec_Custom_Freeze"
 for pred_len in 96 192 384 768
 do
 
-    python -u Run_VTrans-Informer-Autoformer/train_Freeze_Elec_Custom.py \
+    python -u train_Freeze_Elec_Custom.py \
       --is_training 1 \
       --file_name $file_name \
       --root_path ./dataset/ \

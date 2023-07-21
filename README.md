@@ -82,39 +82,39 @@ sh scripts/MLP-LSTM/ForLSTM/etth_1_2/LSTM_ETTh2.sh
 
 For Electricity Normal and OTH :
 ```sh
-sh scripts/V_Transformer/electricity/V_T_Electricity.sh
+sh scripts/V_Transformer/electricity/Electricity.sh
 
-sh scripts/V_Transformer/electricity/V_T_Electricity_OTH.sh
+sh scripts/V_Transformer/electricity/Electricity_OTH.sh
 
-sh scripts/V_Transformer/electricity/V_T_Elec_Continue.sh
+sh scripts/V_Transformer/electricity/Elec_Continue.sh
 
-sh scripts/V_Transformer/electricity/V_T_Elec_Prediction.sh
+sh scripts/V_Transformer/electricity/Elec_Prediction.sh
 
-sh scripts/V_Transformer/electricity/V_T_Elec_Freeze.sh
+sh scripts/V_Transformer/electricity/Elec_Freeze.sh
 ```
 For Elec_Custom 01 and 04 :
 ```sh
-sh scripts/V_Transformer/elec_custom/V_T_Elec_Custom01.sh
+sh scripts/V_Transformer/elec_custom/Elec_Custom01.sh
 
-sh scripts/V_Transformer/elec_custom/V_T_Elec_Custom04.sh
+sh scripts/V_Transformer/elec_custom/Elec_Custom04.sh
 
-sh scripts/V_Transformer/elec_custom/V_T_Elec_Custom_Continue.sh
+sh scripts/V_Transformer/elec_custom/Elec_Custom_Continue.sh
 
-sh scripts/V_Transformer/elec_custom/V_T_Elec_Custom_Prediction.sh
+sh scripts/V_Transformer/elec_custom/Elec_Custom_Prediction.sh
 
-sh scripts/V_Transformer/elec_custom/V_T_Elec_Custom_Freeze.sh
+sh scripts/V_Transformer/elec_custom/Elec_Custom_Freeze.sh
 ```
 For ETTh1 and ETTh2 :
 ```sh
-sh scripts/V_Transformer/etth_1_2/V_T_ETTh1.sh
+sh scripts/V_Transformer/etth_1_2/ETTh1.sh
 
-sh scripts/V_Transformer/etth_1_2/V_T_ETTh2.sh
+sh scripts/V_Transformer/etth_1_2/ETTh2.sh
 
-sh scripts/V_Transformer/etth_1_2/V_T_etth_Continue.sh
+sh scripts/V_Transformer/etth_1_2/etth_Continue.sh
 
-sh scripts/V_Transformer/etth_1_2/V_T_etth_Prediction.sh
+sh scripts/V_Transformer/etth_1_2/etth_Prediction.sh
 
-sh scripts/V_Transformer/etth_1_2/V_T_etth_Freeze.sh
+sh scripts/V_Transformer/etth_1_2/etth_Freeze.sh
 ```
 
 ## For Conformer

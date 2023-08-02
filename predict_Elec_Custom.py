@@ -30,7 +30,7 @@ parser.add_argument(
     type=str,
     required=True,
     default="Autoformer",
-    help="model name, options: [Autoformer, Informer, Transformer]",
+    help="model name, options: [Autoformer, Informer, FEDFormer, Transformer]",
 )
 parser.add_argument(
     "--file_name",

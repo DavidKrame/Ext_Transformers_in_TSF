@@ -2,11 +2,11 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-if [ ! -d "./logs/Autoformer" ]; then
-    mkdir ./logs/Autoformer
+if [ ! -d "./logs/FEDFormer" ]; then
+    mkdir ./logs/FEDFormer
 fi
 
-model_name=Autoformer
+model_name=FEDFormer
 seq_len=96
 file_name="Electricity"
 
@@ -34,7 +34,7 @@ do
       --c_out 1 \
       --des 'Exp' \
       --itr 1 \
-      --train_epochs 10 >logs/Autoformer/$model_name'_electricity'_$seq_len'_'$pred_len.log
+      --train_epochs 10 >logs/FEDFormer/$model_name'_electricity'_$seq_len'_'$pred_len.log
 
     
 done

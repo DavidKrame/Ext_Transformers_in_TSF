@@ -103,7 +103,7 @@ def parse_args():
     )  # selection: [FC, attention]
 
     parser.add_argument(
-        "--file_name",
+        "-file_name",
         type=str,
         required=False,
         default="File",

@@ -2,25 +2,25 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-if [ ! -d "./logs/Autoformer" ]; then
-    mkdir ./logs/Autoformer
+if [ ! -d "./logs/FEDFormer" ]; then
+    mkdir ./logs/FEDFormer
 fi
 
-model_name=Autoformer
+model_name=FEDFormer
 seq_len=96
-file_name="Electricity"
+file_name="Elec_Custom_04"
 
 for pred_len in 96 192 384 768
 do
 
     python -u run_longExp.py \
       --is_training 1 \
-      --root_path ./dataset/ \
       --file_name $file_name \
-      --data_path electricity.csv \
-      --model_id electricity_96_$pred_len \
+      --root_path ./dataset/ \
+      --data_path custom_elec_04.csv \
+      --model_id custom_elec_04_96_$pred_len \
       --model $model_name \
-      --data ECL \
+      --data custom \
       --features S \
       --patience 5\
       --seq_len 96 \
@@ -34,6 +34,6 @@ do
       --c_out 1 \
       --des 'Exp' \
       --itr 1 \
-      --train_epochs 10 >logs/Autoformer/$model_name'_electricity'_$seq_len'_'$pred_len.log
-      
+      --train_epochs 10 >logs/FEDFormer/$model_name'_custom_elec_04'_$seq_len'_'$pred_len.log
+
 done

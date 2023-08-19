@@ -2,13 +2,13 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-if [ ! -d "./logs/Autoformer" ]; then
-    mkdir ./logs/Autoformer
+if [ ! -d "./logs/FEDFormer" ]; then
+    mkdir ./logs/FEDFormer
 fi
 
-model_name=Autoformer
+model_name=FEDFormer
 seq_len=96
-file_name="Electricity"
+file_name="Electricity_OTH"
 
 for pred_len in 96 192 384 768
 do
@@ -17,7 +17,7 @@ do
       --is_training 1 \
       --root_path ./dataset/ \
       --file_name $file_name \
-      --data_path electricity.csv \
+      --data_path electricity_OTH.csv \
       --model_id electricity_96_$pred_len \
       --model $model_name \
       --data ECL \
@@ -34,6 +34,7 @@ do
       --c_out 1 \
       --des 'Exp' \
       --itr 1 \
-      --train_epochs 10 >logs/Autoformer/$model_name'_electricity'_$seq_len'_'$pred_len.log
-      
+      --train_epochs 10 >logs/FEDFormer/$model_name'_electricity_OTH'_$seq_len'_'$pred_len.log
+
+    
 done

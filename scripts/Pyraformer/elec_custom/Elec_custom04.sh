@@ -1,10 +1,10 @@
 # cd Pyraformer
-if [ ! -d "../logs" ]; then
-    mkdir ../logs
+if [ ! -d "./logs" ]; then
+    mkdir ./logs
 fi
 
-if [ ! -d "../logs/Pyraformer" ]; then
-    mkdir ../logs/Pyraformer
+if [ ! -d "./logs/Pyraformer" ]; then
+    mkdir ./logs/Pyraformer
 fi
 
 model_name=Pyraformer
@@ -23,5 +23,5 @@ do
       -model $model_name \
       -input_size $seq_len \
       -epoch 10 \
-      -n_head 8 >../logs/Pyraformer/Pyraformer_Elec_Custom_04_$pred_len.log
+      -n_head 8 >./logs/Pyraformer/Pyraformer_Elec_Custom_04_$pred_len.log
 done

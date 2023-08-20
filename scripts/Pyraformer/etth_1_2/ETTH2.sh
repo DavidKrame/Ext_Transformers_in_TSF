@@ -23,5 +23,5 @@ do
       -model $model_name \
       -input_size $seq_len \
       -epoch 10 \
-      -n_head 8 >./logs/Pyraformer/Pyraformer_ETTh2_$pred_len.log
+      -n_head 8 >logs/Pyraformer/Pyraformer_ETTh2_$pred_len.log
 done

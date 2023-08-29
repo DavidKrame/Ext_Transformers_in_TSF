@@ -426,8 +426,8 @@ class Dataset_Custom_2(Dataset):
         root_path,
         flag="train",
         size=None,
-        data_path="ETTm1.csv",
-        dataset="ETTm1",
+        data_path="Elec_Custom01.csv",
+        dataset="custom",
         inverse=False,
     ):
         # size [seq_len, label_len, pred_len]

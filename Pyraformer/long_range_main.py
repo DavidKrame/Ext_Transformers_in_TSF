@@ -170,7 +170,7 @@ def dataset_parameters(args, dataset):
         "ETTm1": 7,
         "ETTm2": 7,
         "electricity": 321,
-        "custom": 321,
+        "custom": 2,
         "exchange": 8,
         "traffic": 862,
         "weather": 21,

@@ -508,6 +508,7 @@ class Exp_Main_Continue:
             "DLinear": DLinear,
             "NLinear": NLinear,
             "Linear": Linear,
+            "FEDFormer": FEDFormer,
         }
         model = model_dict[self.args.model].Model(self.args).float()
         model.load_state_dict(
@@ -980,6 +981,7 @@ class Exp_Main_Freeze:
             "DLinear": DLinear,
             "NLinear": NLinear,
             "Linear": Linear,
+            "FEDFormer": FEDFormer,
         }
         model = model_dict[self.args.model].Model(self.args).float()
         model.load_state_dict(

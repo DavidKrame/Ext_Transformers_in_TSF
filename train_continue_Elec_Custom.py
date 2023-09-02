@@ -150,6 +150,18 @@ parser.add_argument(
     default=False,
 )
 
+"""For FEDFormer Only"""
+parser.add_argument("--version", type=str, default="Wavelets", help="exp description")
+parser.add_argument("--mode_select", type=str, default="random", help="exp description")
+parser.add_argument("--base", type=str, default="legendre", help="exp description")
+parser.add_argument("--cross_activation", type=str, default="tanh", help="activation")
+
+parser.add_argument("--ab", type=int, default=0, help="experiments times")
+parser.add_argument("--L", type=int, default=1, help="experiments times")
+parser.add_argument("--modes", type=int, default=32, help="experiments times")
+parser.add_argument("--wavelet", type=int, default=0, help="experiments times")
+
+
 # GPU
 parser.add_argument("--use_gpu", type=bool, default=True, help="use gpu")
 parser.add_argument("--gpu", type=int, default=0, help="gpu")

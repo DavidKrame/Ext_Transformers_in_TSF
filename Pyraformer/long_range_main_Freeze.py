@@ -343,27 +343,6 @@ def eval_epoch(model, test_dataset, test_loader, opt, epoch):
     print("test shape:{}".format(preds.shape))
     mae, mse, rmse, mape, mspe = metric(preds, trues)
 
-    # result save
-    folder_path_csv = "./csv_results/" + str(opt.model) + "/" + str(opt.file_name) + "/"
-    if not os.path.exists(folder_path_csv):
-        os.makedirs(folder_path_csv)
-
-    """
-    CSV OF RESULTS
-    """
-    new_row = {"Pred_len": opt.predict_step, "mae": mae, "mse": mse}
-    try:
-        data_fr = pds.read_csv(folder_path_csv + "file.csv")
-    except:
-        data = {"Pred_len": [], "mae": [], "mse": []}
-        data_fr = pds.DataFrame(data)
-
-    data_fr = data_fr.append(new_row, ignore_index=True)
-    data_fr.to_csv(folder_path_csv + "file.csv", index=False)
-    """
-    FIN CSV OF RESULTS
-    """
-
     print(
         "Epoch {}, mse:{}, mae:{}, rmse:{}, mape:{}, mspe:{}".format(
             epoch, mse, mae, rmse, mape, mspe
@@ -463,6 +442,11 @@ def main(opt, iter_index):
     else:
         opt.device = torch.device("cpu")
 
+    if opt.data == "ETTh2":
+        opt.data = "ETTh1"
+    else:
+        pass
+
     """ load and freeze model """
     if iter_index == 0:
         model_save_dir = "checkpoints/init/Pyraformer_{}_{}/checkpoint.pth".format(
@@ -521,3 +505,24 @@ if __name__ == "__main__":
     all_perf = np.array(all_perf)
     all_perf = all_perf.mean(0)
     print("Average Metrics: {}".format(all_perf))
+
+    # result save
+    folder_path_csv = "./csv_results/" + str(opt.model) + "/" + str(opt.file_name) + "/"
+    if not os.path.exists(folder_path_csv):
+        os.makedirs(folder_path_csv)
+
+    """
+    CSV OF RESULTS
+    """
+    new_row = {"Pred_len": opt.predict_step, "mae": metrics[0], "mse": metrics[1]}
+    try:
+        data_fr = pds.read_csv(folder_path_csv + "file.csv")
+    except:
+        data = {"Pred_len": [], "mae": [], "mse": []}
+        data_fr = pds.DataFrame(data)
+
+    data_fr = data_fr.append(new_row, ignore_index=True)
+    data_fr.to_csv(folder_path_csv + "file.csv", index=False)
+    """
+    FIN CSV OF RESULTS
+    """

@@ -463,17 +463,35 @@ def main(opt, iter_index):
     else:
         opt.device = torch.device("cpu")
 
-    """ prepare model """
-    model = eval(opt.model).Model(opt)
+    """ load and freeze model """
+    if iter_index == 0:
+        model_save_dir = "checkpoints/init/Pyraformer_{}_{}/checkpoint.pth".format(
+            opt.data, opt.predict_step
+        )
+    elif iter_index > 0:
+        model_save_dir = "checkpoints/Pyraformer/{}/{}/".format(
+            opt.data, opt.predict_step
+        )
+        os.makedirs(model_save_dir, exist_ok=True)
 
+    model = eval(opt.model).Model(opt)
     model.to(opt.device)
+
+    checkpoint = torch.load(model_save_dir)["state_dict"]
+    model.load_state_dict(checkpoint)
+
+    # FREEZING LAYERS
+    indexes = [i for i in range(opt.n_layer)]
+    for i in indexes:
+        print("FREEZING LAYER --- {}".format(i))
+        model.encoder.layers[i].slf_attn.requires_grad = False
 
     """ number of parameters """
     num_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print("[Info] The total number of parameters: {}".format(num_params))
 
     """ train or evaluate the model """
-    model_save_dir = "checkpoints/Pyraformer_{}_{}/".format(opt.data, opt.predict_step)
+    model_save_dir = "checkpoints/Pyraformer/{}/{}/".format(opt.data, opt.predict_step)
     os.makedirs(model_save_dir, exist_ok=True)
     # model_save_dir += "best_iter{}.pth".format(iter_index)
     model_save_dir += "checkpoint.pth"

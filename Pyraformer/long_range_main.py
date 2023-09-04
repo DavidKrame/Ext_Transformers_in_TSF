@@ -342,11 +342,37 @@ def eval_epoch(model, test_dataset, test_loader, opt, epoch):
     # np.save('./results/'+ 'true.npy', trues)
     print("test shape:{}".format(preds.shape))
     mae, mse, rmse, mape, mspe = metric(preds, trues)
+
+    # result save
+    folder_path_csv = "./csv_results/" + str(opt.model) + "/" + str(opt.file_name) + "/"
+    if not os.path.exists(folder_path_csv):
+        os.makedirs(folder_path_csv)
+
+    """
+    CSV OF RESULTS
+    """
+    new_row = {"Pred_len": opt.pred_len, "mae": mae, "mse": mse}
+    try:
+        data_fr = pds.read_csv(folder_path_csv + "file.csv")
+    except:
+        data = {"Pred_len": [], "mae": [], "mse": []}
+        data_fr = pds.DataFrame(data)
+
+    data_fr = data_fr.append(new_row, ignore_index=True)
+    data_fr.to_csv(folder_path_csv + "file.csv", index=False)
+    """
+    FIN CSV OF RESULTS
+    """
+
     print(
         "Epoch {}, mse:{}, mae:{}, rmse:{}, mape:{}, mspe:{}".format(
             epoch, mse, mae, rmse, mape, mspe
         )
     )
+    print(
+        "------------------------------------------------------------------------------------------------------------------------------"
+    )
+    print("Epoch {}, mse:{}, mae:{}".format(epoch, mse, mae))
 
     return mse, mae, rmse, mape, mspe
 
@@ -425,26 +451,6 @@ def evaluate(model, opt, model_save_dir):
         best_mse = mse
         best_metrics = current_metrics
 
-    # result save
-    folder_path_csv = "./csv_results/" + str(opt.model) + "/" + str(opt.file_name) + "/"
-    if not os.path.exists(folder_path_csv):
-        os.makedirs(folder_path_csv)
-
-    """
-    CSV OF RESULTS
-    """
-    new_row = {"Pred_len": opt.pred_len, "mae": mae, "mse": mse}
-    try:
-        data_fr = pds.read_csv(folder_path_csv + "file.csv")
-    except:
-        data = {"Pred_len": [], "mae": [], "mse": []}
-        data_fr = pds.DataFrame(data)
-
-    data_fr = data_fr.append(new_row, ignore_index=True)
-    data_fr.to_csv(folder_path_csv + "file.csv", index=False)
-    """
-    FIN CSV OF RESULTS
-    """
     return best_metrics
 
 
@@ -464,12 +470,13 @@ def main(opt, iter_index):
 
     """ number of parameters """
     num_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
-    print("[Info] Number of parameters: {}".format(num_params))
+    print("[Info] The total number of parameters: {}".format(num_params))
 
     """ train or evaluate the model """
     model_save_dir = "checkpoints/Pyraformer/{}/{}/".format(opt.data, opt.predict_step)
     os.makedirs(model_save_dir, exist_ok=True)
-    model_save_dir += "best_iter{}.pth".format(iter_index)
+    # model_save_dir += "best_iter{}.pth".format(iter_index)
+    model_save_dir += "best_iter.pth"
     if opt.eval:
         best_metrics = evaluate(model, opt, model_save_dir)
     else:

@@ -474,6 +474,9 @@ def main(opt, iter_index):
     # model_save_dir += "best_iter{}.pth".format(iter_index)
     model_save_dir += "checkpoint.pth"
     if opt.eval:
+        model_save_dir = "checkpoints/init/Pyraformer_{}_{}/checkpoint.pth".format(
+            opt.data, opt.predict_step
+        )
         best_metrics = evaluate(model, opt, model_save_dir)
     else:
         """optimizer and scheduler"""

@@ -141,7 +141,7 @@ def parse_args():
         "-truncate", action="store_true", default=False
     )  # Whether to remove coarse-scale nodes from the attention structure
     parser.add_argument(
-        "-use_tvm", action="store_true", default=True
+        "-use_tvm", action="store_true", default=False
     )  # Whether to use TVM.
 
     # Experiment repeat times.

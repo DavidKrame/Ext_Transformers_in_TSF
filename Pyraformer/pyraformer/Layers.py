@@ -198,7 +198,7 @@ class EncoderLayer(nn.Module):
         d_v,
         dropout=0.1,
         normalize_before=True,
-        use_tvm=True,
+        use_tvm=False,
         q_k_mask=None,
         k_q_mask=None,
     ):

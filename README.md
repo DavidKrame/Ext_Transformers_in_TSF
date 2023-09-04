@@ -35,7 +35,7 @@ sh scripts/Conformer/etth_1_2/Conformer_ETTh_1_2_SIRN.sh
 
 ## For V_Transformer, Informer, Autoformer, FEDFormer and Pyraformer  
 
-**In order to do experiments with a specific model, you have to change <span style="color:blue">some *blue* text</span>in ``V_Transformer``, ``Informer``, ``Autoformer``, ``FEDFormer`` or ``Pyraformer`` in all of these following scripts.**
+**In order to do experiments with a specific model, you have to change ``MODEL`` in ``V_Transformer``, ``Informer``, ``Autoformer``, ``FEDFormer`` or ``Pyraformer`` in all of these following scripts.**
 
 For Electricity Normal and OTH :
 ```sh

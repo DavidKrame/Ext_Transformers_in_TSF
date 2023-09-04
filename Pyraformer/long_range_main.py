@@ -351,7 +351,7 @@ def eval_epoch(model, test_dataset, test_loader, opt, epoch):
     """
     CSV OF RESULTS
     """
-    new_row = {"Pred_len": opt.pred_len, "mae": mae, "mse": mse}
+    new_row = {"Pred_len": opt.predict_step, "mae": mae, "mse": mse}
     try:
         data_fr = pds.read_csv(folder_path_csv + "file.csv")
     except:

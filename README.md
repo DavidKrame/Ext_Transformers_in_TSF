@@ -1,123 +1,5 @@
-## MLP
-For Elec_Custom 01 and 04 :
-```sh
-sh scripts/MLP-LSTM/ForMLP/elec_custom/MLP_Elec_Custom_Prediction.sh
-
-sh scripts/MLP-LSTM/ForMLP/elec_custom/MLP_Elec_Custom_Freeze.sh
-
-sh scripts/MLP-LSTM/ForMLP/elec_custom/MLP_Elec_Custom_Continue.sh
-
-sh scripts/MLP-LSTM/ForMLP/elec_custom/MLP_Elec_Custom01.sh
-
-sh scripts/MLP-LSTM/ForMLP/elec_custom/MLP_Elec_Custom04.sh
-```
-
-For Electricity Normal and OTH :
-```sh
-sh scripts/MLP-LSTM/ForMLP/electricity/MLP_Elec_Prediction.sh
-
-sh scripts/MLP-LSTM/ForMLP/electricity/MLP_Elec_Freeze.sh
-
-sh scripts/MLP-LSTM/ForMLP/electricity/MLP_Elec_Continue.sh
-
-sh scripts/MLP-LSTM/ForMLP/electricity/MLP_Electricity.sh
-
-sh scripts/MLP-LSTM/ForMLP/electricity/MLP_Electricity_OTH.sh
-```
-
-For ETTh1 and ETTh2 :
-```sh
-sh scripts/MLP-LSTM/ForMLP/etth_1_2/MLP_etth_Prediction.sh
-
-sh scripts/MLP-LSTM/ForMLP/etth_1_2/MLP_etth_Freeze.sh
-
-sh scripts/MLP-LSTM/ForMLP/etth_1_2/MLP_etth_Continue.sh
-
-sh scripts/MLP-LSTM/ForMLP/etth_1_2/MLP_ETTh1.sh
-
-sh scripts/MLP-LSTM/ForMLP/etth_1_2/MLP_ETTh2.sh
-```
-
-## LSTM
-For Elec_Custom 01 and 04 :
-```sh
-sh scripts/MLP-LSTM/ForLSTM/elec_custom/LSTM_Elec_Custom_Prediction.sh
-
-sh scripts/MLP-LSTM/ForLSTM/elec_custom/LSTM_Elec_Custom_Freeze.sh
-
-sh scripts/MLP-LSTM/ForLSTM/elec_custom/LSTM_Elec_Custom_Continue.sh
-
-sh scripts/MLP-LSTM/ForLSTM/elec_custom/LSTM_Elec_Custom01.sh
-
-sh scripts/MLP-LSTM/ForLSTM/elec_custom/LSTM_Elec_Custom04.sh
-```
-
-For Electricity Normal and OTH :
-```sh
-sh scripts/MLP-LSTM/ForLSTM/electricity/LSTM_Elec_Prediction.sh
-
-sh scripts/MLP-LSTM/ForLSTM/electricity/LSTM_Elec_Freeze.sh
-
-sh scripts/MLP-LSTM/ForLSTM/electricity/LSTM_Elec_Continue.sh
-
-sh scripts/MLP-LSTM/ForLSTM/electricity/LSTM_Electricity.sh
-
-sh scripts/MLP-LSTM/ForLSTM/electricity/LSTM_Electricity_OTH.sh
-```
-
-For ETTh1 and ETTh2 :
-```sh
-sh scripts/MLP-LSTM/ForLSTM/etth_1_2/LSTM_etth_Prediction.sh
-
-sh scripts/MLP-LSTM/ForLSTM/etth_1_2/LSTM_etth_Freeze.sh
-
-sh scripts/MLP-LSTM/ForLSTM/etth_1_2/LSTM_etth_Continue.sh
-
-sh scripts/MLP-LSTM/ForLSTM/etth_1_2/LSTM_ETTh1.sh
-
-sh scripts/MLP-LSTM/ForLSTM/etth_1_2/LSTM_ETTh2.sh
-```
-## For V_Transformer (or Informer, or Autoformer)
-**In order to do experiments with Informer or Autoformer, you have to change "V_Transformer" in 'Informer' or 'Autoformer' in all of these following scripts.**
-
-For Electricity Normal and OTH :
-```sh
-sh scripts/V_Transformer/electricity/Electricity.sh
-
-sh scripts/V_Transformer/electricity/Electricity_OTH.sh
-
-sh scripts/V_Transformer/electricity/Elec_Continue.sh
-
-sh scripts/V_Transformer/electricity/Elec_Prediction.sh
-
-sh scripts/V_Transformer/electricity/Elec_Freeze.sh
-```
-For Elec_Custom 01 and 04 :
-```sh
-sh scripts/V_Transformer/elec_custom/Elec_Custom01.sh
-
-sh scripts/V_Transformer/elec_custom/Elec_Custom04.sh
-
-sh scripts/V_Transformer/elec_custom/Elec_Custom_Continue.sh
-
-sh scripts/V_Transformer/elec_custom/Elec_Custom_Prediction.sh
-
-sh scripts/V_Transformer/elec_custom/Elec_Custom_Freeze.sh
-```
-For ETTh1 and ETTh2 :
-```sh
-sh scripts/V_Transformer/etth_1_2/ETTh1.sh
-
-sh scripts/V_Transformer/etth_1_2/ETTh2.sh
-
-sh scripts/V_Transformer/etth_1_2/etth_Continue.sh
-
-sh scripts/V_Transformer/etth_1_2/etth_Prediction.sh
-
-sh scripts/V_Transformer/etth_1_2/etth_Freeze.sh
-```
-
 ## For Conformer
+
 For Electricity Normal and OTH :
 ```sh
 sh scripts/Conformer/electricity/Conformer.sh
@@ -151,16 +33,43 @@ sh scripts/Conformer/etth_1_2/Conformer_Prediction_ETTh12.sh
 sh scripts/Conformer/etth_1_2/Conformer_ETTh_1_2_SIRN.sh
 ```
 
-## EXEMPLES
-To train *NLinear* and *DLinear* on **ETTh1, ETTm1, electricity** and **weather** datasets, use :  
+## For V_Transformer, Informer, Autoformer, FEDFormer and Pyraformer  
+
+**In order to do experiments with a specific model, you have to change ``MODEL`` in ``MODEL``, ``Informer``, ``Autoformer``, ``FEDFormer`` or ``Pyraformer`` in all of these following scripts.**
+
+For Electricity Normal and OTH :
 ```sh
-sh scripts/Linears/etth1UNI.sh
+sh scripts/MODEL/electricity/Electricity.sh
 
-sh scripts/Linears/ettm1UNI.sh
+sh scripts/MODEL/electricity/Electricity_OTH.sh
 
-sh scripts/Linears/weatherUNI.sh
+sh scripts/MODEL/electricity/Elec_Continue.sh
 
-sh scripts/Linears/electricityUNI.sh
+sh scripts/MODEL/electricity/Elec_Prediction.sh
+
+sh scripts/MODEL/electricity/Elec_Freeze.sh
 ```
+For Elec_Custom 01 and 04 :
+```sh
+sh scripts/MODEL/elec_custom/Elec_Custom01.sh
 
-The results will be in **logs** and **csv_results** directories.
+sh scripts/MODEL/elec_custom/Elec_Custom04.sh
+
+sh scripts/MODEL/elec_custom/Elec_Custom_Continue.sh
+
+sh scripts/MODEL/elec_custom/Elec_Custom_Prediction.sh
+
+sh scripts/MODEL/elec_custom/Elec_Custom_Freeze.sh
+```
+For ETTh1 and ETTh2 :
+```sh
+sh scripts/MODEL/etth_1_2/ETTh1.sh
+
+sh scripts/MODEL/etth_1_2/ETTh2.sh
+
+sh scripts/MODEL/etth_1_2/etth_Continue.sh
+
+sh scripts/MODEL/etth_1_2/etth_Prediction.sh
+
+sh scripts/MODEL/etth_1_2/etth_Freeze.sh
+```

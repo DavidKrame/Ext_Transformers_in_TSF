@@ -9,12 +9,13 @@ fi
 model_name=Pyraformer
 seq_len=96
 file_name="Elec_Prediction"
+eval=true
 
 for pred_len in 96 192 384 768
 do
     python -u Pyraformer/long_range_main_Continue.py \
       -data electricity \
-      -eval True \
+      -eval $eval \
       -predict_step $pred_len \
       -root_path ./dataset/ \
       -file_name $file_name \

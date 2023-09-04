@@ -9,11 +9,12 @@ fi
 model_name=Pyraformer
 seq_len=96
 file_name="Etth_Prediction"
+eval=true
 
 for pred_len in 96 192 384 768
 do
     python -u Pyraformer/long_range_main_Continue.py \
-      -eval True\
+      -eval $eval\
       -data ETTh2 \
       -predict_step $pred_len \
       -root_path ./dataset/ \

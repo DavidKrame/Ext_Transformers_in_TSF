@@ -9,7 +9,7 @@ fi
 model_name=Pyraformer
 seq_len=96
 file_name="Elec_Prediction"
-eval=true
+eval = true
 
 for pred_len in 96 192 384 768
 do

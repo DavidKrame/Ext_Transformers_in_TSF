@@ -2,38 +2,24 @@ if [ ! -d "./logs" ]; then
     mkdir ./logs
 fi
 
-if [ ! -d "./logs/FEDFormer" ]; then
-    mkdir ./logs/FEDFormer
+if [ ! -d "./logs/Pyraformer" ]; then
+    mkdir ./logs/Pyraformer
 fi
 
-model_name=FEDFormer
+model_name=Pyraformer
 seq_len=96
 file_name="Elec_Continue"
 
 for pred_len in 96 192 384 768
 do
-
-    python -u train_continue_Elec.py \
-      --is_training 1 \
-      --root_path ./dataset/ \
-      --file_name $file_name \
-      --data_path electricity_OTH.csv \
-      --model_id electricity_OTH_96_$pred_len \
-      --model $model_name \
-      --data ECL \
-      --features S \
-      --patience 2\
-      --seq_len 96 \
-      --label_len 48 \
-      --pred_len $pred_len \
-      --e_layers 2 \
-      --d_layers 1 \
-      --factor 3 \
-      --enc_in 1 \
-      --dec_in 1 \
-      --c_out 1 \
-      --des 'Exp' \
-      --itr 1 \
-      --train_epochs 3 >logs/FEDFormer/$model_name'_Continue_electricity_on_OTH'_$seq_len'_'$pred_len.log
-
+    python -u Pyraformer/long_range_main_Continue.py \
+      -data electricity \
+      -predict_step $pred_len \
+      -root_path ./dataset/ \
+      -file_name $file_name \
+      -data_path electricity_OTH.csv \
+      -model $model_name \
+      -input_size $seq_len \
+      -epoch 3 \
+      -n_head 8 >logs/Pyraformer/$model_name'_Continue_electricity_on_OTH'$pred_len.log
 done

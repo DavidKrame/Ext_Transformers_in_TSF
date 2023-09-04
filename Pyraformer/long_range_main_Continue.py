@@ -447,7 +447,7 @@ def main(opt, iter_index):
     else:
         pass
 
-    """ load and freeze model """
+    """ load model without freezing """
     if iter_index == 0:
         model_save_dir = "checkpoints/init/Pyraformer_{}_{}/checkpoint.pth".format(
             opt.data, opt.predict_step
@@ -463,12 +463,6 @@ def main(opt, iter_index):
 
     checkpoint = torch.load(model_save_dir)["state_dict"]
     model.load_state_dict(checkpoint)
-
-    # FREEZING LAYERS
-    indexes = [i for i in range(opt.n_layer)]
-    for i in indexes:
-        print("FREEZING LAYER --- {}".format(i))
-        model.encoder.layers[i].slf_attn.requires_grad = False
 
     """ number of parameters """
     num_params = sum(p.numel() for p in model.parameters() if p.requires_grad)

@@ -458,11 +458,15 @@ def main(opt, iter_index):
         )
         os.makedirs(model_save_dir, exist_ok=True)
 
-    model = eval(opt.model).Model(opt)
-    model.to(opt.device)
+    # model = eval(opt.model).Model(opt)
+    # model.to(opt.device)
 
-    checkpoint = torch.load(model_save_dir)["state_dict"]
-    model.load_state_dict(checkpoint)
+    model = Pyraformer.Model(opt).float()
+    model.to(opt.device)
+    model.load_state_dict(torch.load(model_save_dir))
+
+    # checkpoint = torch.load(model_save_dir)["state_dict"]
+    # model.load_state_dict(checkpoint)
 
     # FREEZING LAYERS
     indexes = [i for i in range(opt.n_layer)]

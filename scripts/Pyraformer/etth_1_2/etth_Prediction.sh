@@ -22,5 +22,5 @@ do
       -data_path ETTh2.csv \
       -model $model_name \
       -input_size $seq_len \
-      -n_head 8 >logs/Pyraformer/$model_name'_Predict_ETTh2_with_1'$pred_len.log
+      -n_head 8 >logs/Pyraformer/$model_name'_Predict_ETTh2_with_1_'$pred_len.log
 done

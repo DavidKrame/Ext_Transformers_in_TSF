@@ -329,10 +329,7 @@ class Dataset_elec(Dataset):
             #     6 * 30 * 24 + 2 * 30 * 24,
             #     6 * 30 * 24 + 4 * 30 * 24,
             # ]
-        elif self.data_set == "WTH":  # 24/2/2
-            # border1s = [0, 24*30*6*8 - self.seq_len, 24*30*6*8+6*30*24 - self.seq_len]
-            # border2s = [24*30*6*8, 24*30*6*8+30*24*6, 24*30*6*8+6*30*24*2]
-
+        elif self.data_set == "WTH":  # 7/2/2
             # For 100%
             border1s = [
                 0,
@@ -344,6 +341,8 @@ class Dataset_elec(Dataset):
                 7 * 30 * 24 * 6 + 2 * 30 * 24 * 6,
                 7 * 30 * 24 * 6 + 4 * 30 * 24 * 6,
             ]
+
+            # 50%
             # border1s = [
             #     0,
             #     7 * 15 * 24 * 6 - self.seq_len,

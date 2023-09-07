@@ -22,5 +22,5 @@ do
       -data_path electricity_OTH.csv \
       -model $model_name \
       -input_size $seq_len \
-      -n_head 8 >logs/Pyraformer/$model_name'Predict_elec_on_OTH'$pred_len.log
+      -n_head 8 >logs/Pyraformer/$model_name'_Predict_elec_on_OTH_'$pred_len.log
 done

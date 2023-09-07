@@ -21,5 +21,5 @@ do
       -model $model_name \
       -input_size $seq_len \
       -epoch 10 \
-      -n_head 8 >logs/Pyraformer/$model_name'Freeze_elec_to_train_OTH_'$pred_len.log
+      -n_head 8 >logs/Pyraformer/$model_name'_Freeze_elec_to_train_OTH_'$pred_len.log
 done

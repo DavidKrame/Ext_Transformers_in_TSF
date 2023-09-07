@@ -22,5 +22,5 @@ do
       -data_path custom_elec_04.csv \
       -model $model_name \
       -input_size $seq_len \
-      -n_head 8 >logs/Pyraformer/$model_name'_Prediction_elec_custom_on_04'$pred_len.log
+      -n_head 8 >logs/Pyraformer/$model_name'_Prediction_elec_custom_on_04_'$pred_len.log
 done

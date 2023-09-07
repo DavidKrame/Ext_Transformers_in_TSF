@@ -518,6 +518,104 @@ class Dataset_Custom_2(Dataset):
         return self.scaler.inverse_transform(data), seq_y
 
 
+class Dataset_Weather(Dataset):
+    def __init__(
+        self,
+        root_path,
+        flag="train",
+        size=None,
+        data_path="weather.csv",
+        dataset="Weather",
+        inverse=False,
+    ):
+        # size [seq_len, label_len, pred_len]
+        # info
+        if size == None:
+            self.seq_len = 24 * 4 * 4
+            self.pred_len = 24 * 4
+        else:
+            self.seq_len = size[0]
+            self.pred_len = size[1]
+        # init
+        assert flag in ["train", "test", "val"]
+        type_map = {"train": 0, "val": 1, "test": 2}
+        self.set_type = type_map[flag]
+
+        self.inverse = inverse
+
+        self.root_path = root_path
+        self.data_path = data_path
+        self.__read_data__()
+
+    def __read_data__(self):
+        self.scaler = StandardScaler()
+        df_raw = pd.read_csv(os.path.join(self.root_path, self.data_path))
+
+        # 7/2/2
+        #### For 100% of datas
+        border1s = [
+            0,
+            7 * 30 * 24 * 6 - self.seq_len,
+            7 * 30 * 24 * 6 + 2 * 30 * 24 * 6 - self.seq_len,
+        ]
+        border2s = [
+            7 * 30 * 24 * 6,
+            7 * 30 * 24 * 6 + 2 * 30 * 24 * 6,
+            7 * 30 * 24 * 6 + 4 * 30 * 24 * 6,
+        ]
+        ### For 50%
+        # border1s = [
+        #     0,
+        #     7 * 30 * 24 * 3 - self.seq_len,
+        #     7 * 30 * 24 * 3 + 2 * 30 * 24 * 3 - self.seq_len,
+        # ]
+        # border2s = [
+        #     7 * 30 * 24 * 3,
+        #     7 * 30 * 24 * 3 + 2 * 30 * 24 * 3,
+        #     7 * 30 * 24 * 3 + 4 * 30 * 24 * 3,
+        # ]
+
+        border1 = border1s[self.set_type]
+        border2 = border2s[self.set_type]
+
+        cols_data = df_raw.columns[1:]
+        df_data = df_raw[cols_data]
+
+        train_data = df_data[border1s[0] : border2s[0]]
+        self.scaler.fit(train_data.values)
+        data = self.scaler.transform(df_data.values)
+
+        df_stamp = df_raw[["date"]][border1:border2]
+        df_stamp["date"] = pd.to_datetime(df_stamp.date)
+        data_stamp = time_features(df_stamp, timeenc=1, freq="h")
+
+        self.data_x = data[border1:border2]
+        if self.inverse:
+            self.data_y = df_data.values[border1:border2]
+        else:
+            self.data_y = data[border1:border2]
+        self.data_stamp = data_stamp
+
+    def __getitem__(self, index):
+        s_begin = index
+        s_end = s_begin + self.seq_len
+        r_begin = s_end
+        r_end = r_begin + self.pred_len
+
+        seq_x = self.data_x[s_begin:s_end]
+        seq_y = self.data_y[r_begin:r_end]
+        seq_x_mark = self.data_stamp[s_begin:s_end]
+        seq_y_mark = self.data_stamp[r_begin:r_end]
+
+        return seq_x, seq_y, seq_x_mark, seq_y_mark, self.scaler.mean, self.scaler.std
+
+    def __len__(self):
+        return len(self.data_x) - self.seq_len - self.pred_len + 1
+
+    def inverse_transform(self, data, seq_y, mean, std):
+        return self.scaler.inverse_transform(data), seq_y
+
+
 # """Long range dataloader for dataset elect and app flow"""
 class Dataset_Custom2(Dataset):
     def __init__(

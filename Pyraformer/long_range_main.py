@@ -24,7 +24,7 @@ def prepare_dataloader(args):
         "custom": Dataset_Custom_2,
         "exchange": Dataset_Custom,
         "traffic": Dataset_Custom,
-        "weather": Dataset_Custom,
+        "Weather": Dataset_Weather,
         "ili": Dataset_Custom,
         # 'flow': Dataset_Custom2,
         # 'synthetic': Dataset_Synthetic,
@@ -173,7 +173,7 @@ def dataset_parameters(args, dataset):
         "custom": 2,
         "exchange": 8,
         "traffic": 862,
-        "weather": 21,
+        "Weather": 21,
         "ili": 7,
         "flow": 1,
         "synthetic": 1,
@@ -187,7 +187,7 @@ def dataset_parameters(args, dataset):
         "custom": 4,
         "exchange": 4,
         "traffic": 4,
-        "weather": 4,
+        "Weather": 4,
         "ili": 4,
         "elect": 3,
         "flow": 3,
@@ -202,7 +202,7 @@ def dataset_parameters(args, dataset):
         "custom": 1,
         "exchange": 1,
         "traffic": 1,
-        "weather": 1,
+        "Weather": 1,
         "ili": 1,
         "elect": 321,
         "flow": 1077,
@@ -218,7 +218,7 @@ def dataset_parameters(args, dataset):
         "custom": "CustomEmbedding",
         "exchange": "CustomEmbedding",
         "traffic": "CustomEmbedding",
-        "weather": "CustomEmbedding",
+        "Weather": "CustomEmbedding",
         "ili": "CustomEmbedding",
         "flow": "CustomEmbedding",
         "synthetic": "CustomEmbedding",
@@ -343,27 +343,6 @@ def eval_epoch(model, test_dataset, test_loader, opt, epoch):
     print("test shape:{}".format(preds.shape))
     mae, mse, rmse, mape, mspe = metric(preds, trues)
 
-    # result save
-    folder_path_csv = "./csv_results/" + str(opt.model) + "/" + str(opt.file_name) + "/"
-    if not os.path.exists(folder_path_csv):
-        os.makedirs(folder_path_csv)
-
-    """
-    CSV OF RESULTS
-    """
-    new_row = {"Pred_len": opt.predict_step, "mae": mae, "mse": mse}
-    try:
-        data_fr = pds.read_csv(folder_path_csv + "file.csv")
-    except:
-        data = {"Pred_len": [], "mae": [], "mse": []}
-        data_fr = pds.DataFrame(data)
-
-    data_fr = data_fr.append(new_row, ignore_index=True)
-    data_fr.to_csv(folder_path_csv + "file.csv", index=False)
-    """
-    FIN CSV OF RESULTS
-    """
-
     print(
         "Epoch {}, mse:{}, mae:{}, rmse:{}, mape:{}, mspe:{}".format(
             epoch, mse, mae, rmse, mape, mspe
@@ -487,31 +466,6 @@ def main(opt, iter_index):
         scheduler = optim.lr_scheduler.StepLR(optimizer, 1, gamma=opt.lr_step)
         best_metrics = train(model, optimizer, scheduler, opt, model_save_dir)
 
-    # result save
-    folder_path_csv = "./csv_results/" + str(opt.model) + "/" + str(opt.file_name) + "/"
-    if not os.path.exists(folder_path_csv):
-        os.makedirs(folder_path_csv)
-
-    """
-    CSV OF RESULTS
-    """
-    new_row = {
-        "Pred_len": opt.predict_step,
-        "mae": best_metrics[0],
-        "mse": best_metrics[1],
-    }
-    try:
-        data_fr = pds.read_csv(folder_path_csv + "file.csv")
-    except:
-        data = {"Pred_len": [], "mae": [], "mse": []}
-        data_fr = pds.DataFrame(data)
-
-    data_fr = data_fr.append(new_row, ignore_index=True)
-    data_fr.to_csv(folder_path_csv + "file.csv", index=False)
-    """
-    FIN CSV OF RESULTS
-    """
-
     print("Iteration best metrics: {}".format(best_metrics))
     return best_metrics
 
@@ -528,3 +482,28 @@ if __name__ == "__main__":
     all_perf = np.array(all_perf)
     all_perf = all_perf.mean(0)
     print("Average Metrics: {}".format(all_perf))
+
+    # result save
+    folder_path_csv = "./csv_results/" + str(opt.model) + "/" + str(opt.file_name) + "/"
+    if not os.path.exists(folder_path_csv):
+        os.makedirs(folder_path_csv)
+
+    """
+    CSV OF RESULTS
+    """
+    new_row = {
+        "Pred_len": opt.predict_step,
+        "mae": metrics[0],
+        "mse": metrics[1],
+    }
+    try:
+        data_fr = pds.read_csv(folder_path_csv + "file.csv")
+    except:
+        data = {"Pred_len": [], "mae": [], "mse": []}
+        data_fr = pds.DataFrame(data)
+
+    data_fr = data_fr.append(new_row, ignore_index=True)
+    data_fr.to_csv(folder_path_csv + "file.csv", index=False)
+    """
+    FIN CSV OF RESULTS
+    """

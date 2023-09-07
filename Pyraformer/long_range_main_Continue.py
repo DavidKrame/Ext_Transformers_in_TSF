@@ -24,7 +24,7 @@ def prepare_dataloader(args):
         "custom": Dataset_Custom_2,
         "exchange": Dataset_Custom,
         "traffic": Dataset_Custom,
-        "weather": Dataset_Custom,
+        "Weather": Dataset_Weather,
         "ili": Dataset_Custom,
         # 'flow': Dataset_Custom2,
         # 'synthetic': Dataset_Synthetic,

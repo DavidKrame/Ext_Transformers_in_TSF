@@ -448,24 +448,30 @@ def main(opt, iter_index):
         pass
 
     """ load model without freezing """
-    if iter_index == 0:
-        model_save_dir = "checkpoints/init/Pyraformer_{}_{}/checkpoint.pth".format(
-            opt.data, opt.predict_step
-        )
-    elif iter_index > 0:
-        model_save_dir = "checkpoints/Pyraformer_{}_{}/".format(
-            opt.data, opt.predict_step
-        )
-        os.makedirs(model_save_dir, exist_ok=True)
+    # if iter_index == 0:
+    #     model_save_dir = "checkpoints/init/Pyraformer_{}_{}/checkpoint.pth".format(
+    #         opt.data, opt.predict_step
+    #     )
+    # elif iter_index > 0:
+    #     model_save_dir = "checkpoints/Pyraformer_{}_{}/".format(
+    #         opt.data, opt.predict_step
+    #     )
+    #     os.makedirs(model_save_dir, exist_ok=True)
 
     model = Pyraformer.Model(opt).float()
     model.to(opt.device)
 
     # model = eval(opt.model).Model(opt)
-
     # model.load_state_dict(torch.load(model_save_dir))
 
-    checkpoint = torch.load(model_save_dir)["state_dict"]
+    """LOADING THE MODEL FROM INIT"""
+    model_load_dir = "checkpoints/init/Pyraformer_{}_{}".format(
+        opt.data, opt.predict_step
+    )
+
+    checkpoint = torch.load(os.path.join(model_load_dir, "checkpoint.pth"))[
+        "state_dict"
+    ]
     model.load_state_dict(checkpoint)
 
     """ number of parameters """

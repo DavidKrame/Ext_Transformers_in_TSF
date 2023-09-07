@@ -455,8 +455,8 @@ def main(opt, iter_index):
     # model.load_state_dict(torch.load(model_save_dir))
 
     """LOADING THE MODEL FROM INIT"""
-    model_load_dir = "checkpoints/init/Pyraformer_{}_{}".format(
-        opt.data, opt.predict_step
+    model_load_dir = "checkpoints/init/Pyraformer_{}_{}_{}/".format(
+        opt.data, opt.predict_step, opt.data_path
     )
 
     checkpoint = torch.load(os.path.join(model_load_dir, "checkpoint.pth"))[
@@ -475,7 +475,10 @@ def main(opt, iter_index):
     print("[Info] The total number of parameters: {}".format(num_params))
 
     """ train or evaluate the model """
-    model_save_dir = "checkpoints/Pyraformer_{}_{}/".format(opt.data, opt.predict_step)
+    model_save_dir = "checkpoints/Pyraformer_{}_{}_{}/".format(
+        opt.data, opt.predict_step, opt.data_path
+    )
+
     os.makedirs(model_save_dir, exist_ok=True)
     # model_save_dir += "best_iter{}.pth".format(iter_index)
     model_save_dir += "checkpoint.pth"

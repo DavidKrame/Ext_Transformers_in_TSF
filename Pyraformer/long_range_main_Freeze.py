@@ -443,9 +443,32 @@ def main(opt, iter_index):
         opt.device = torch.device("cpu")
 
     if opt.data == "ETTh2":
-        opt.data = "ETTh1"
+        """LOADING THE MODEL FROM INIT"""
+        model_load_dir = "checkpoints/init/Pyraformer_ETTh1_{}_ETTh1.csv/".format(
+            opt.predict_step
+        )
+
+    elif opt.data_path == "weather_OTH.csv":
+        """LOADING THE MODEL FROM INIT"""
+        model_load_dir = "checkpoints/init/Pyraformer_{}_{}_weather.csv/".format(
+            opt.data, opt.predict_step
+        )
+    elif opt.data_path == "electricity_OTH.csv":
+        """LOADING THE MODEL FROM INIT"""
+        model_load_dir = "checkpoints/init/Pyraformer_{}_{}_electricity.csv/".format(
+            opt.data, opt.predict_step
+        )
+    elif opt.data_path == "custom_elec_04.csv":
+        """LOADING THE MODEL FROM INIT"""
+        model_load_dir = "checkpoints/init/Pyraformer_{}_{}_custom_elec_01.csv/".format(
+            opt.data, opt.predict_step
+        )
+
     else:
-        pass
+        """LOADING THE MODEL FROM INIT"""
+        model_load_dir = "checkpoints/init/Pyraformer_{}_{}_{}/".format(
+            opt.data, opt.predict_step, opt.data_path
+        )
 
     """ load and freeze model """
     model = Pyraformer.Model(opt).float()
@@ -453,11 +476,6 @@ def main(opt, iter_index):
 
     # model = eval(opt.model).Model(opt)
     # model.load_state_dict(torch.load(model_save_dir))
-
-    """LOADING THE MODEL FROM INIT"""
-    model_load_dir = "checkpoints/init/Pyraformer_{}_{}_{}/".format(
-        opt.data, opt.predict_step, opt.data_path
-    )
 
     checkpoint = torch.load(os.path.join(model_load_dir, "checkpoint.pth"))[
         "state_dict"

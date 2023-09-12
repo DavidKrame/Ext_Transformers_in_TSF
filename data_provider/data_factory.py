@@ -5,6 +5,7 @@ from data_provider.data_loader import (
     Dataset_Custom,
     Dataset_Pred,
     Dataset_Weather,
+    Dataset_Binance,
 )
 from torch.utils.data import DataLoader
 
@@ -16,6 +17,7 @@ data_dict = {
     "ECL": Dataset_Custom,
     "custom": Dataset_Custom_2,
     "Weather": Dataset_Weather,
+    "binance": Dataset_Binance,
 }
 
 

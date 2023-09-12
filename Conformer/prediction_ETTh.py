@@ -217,6 +217,14 @@ data_parser = {
         "MS": [21, 21, 1],
         "freq": "h",
     },
+    "Binance": {
+        "data": "Binance.csv",
+        "T": "OT",
+        "M": [8, 8, 8],
+        "S": [1, 1, 1],
+        "MS": [8, 8, 1],
+        "freq": "h",
+    },
     "ECL": {
         "data": "electricity.csv",
         "T": "OT",

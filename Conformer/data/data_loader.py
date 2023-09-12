@@ -353,6 +353,30 @@ class Dataset_elec(Dataset):
             #     7 * 15 * 24 * 6 + 2 * 30 * 24 * 6,
             #     7 * 15 * 24 * 6 + 4 * 30 * 24 * 6,
             # ]
+        elif self.data_set == "Binance":  # 7/2/2
+            # For 100%
+            # border1s = [
+            #     0,
+            #     7 * 30 * 24 * 6 - self.seq_len,
+            #     7 * 30 * 24 * 6 + 2 * 30 * 24 * 6 - self.seq_len,
+            # ]
+            # border2s = [
+            #     7 * 30 * 24 * 6,
+            #     7 * 30 * 24 * 6 + 2 * 30 * 24 * 6,
+            #     7 * 30 * 24 * 6 + 4 * 30 * 24 * 6,
+            # ]
+
+            # 50% for WEATHER but 100 for Binance
+            border1s = [
+                0,
+                7 * 15 * 24 * 6 - self.seq_len,
+                7 * 15 * 24 * 6 + 2 * 30 * 24 * 6 - self.seq_len,
+            ]
+            border2s = [
+                7 * 15 * 24 * 6,
+                7 * 15 * 24 * 6 + 2 * 30 * 24 * 6,
+                7 * 15 * 24 * 6 + 4 * 30 * 24 * 6,
+            ]
         elif self.data_set == "TRAF":  # 15/3/3
             border1s = [
                 0,
@@ -584,6 +608,30 @@ class Reduced_dataset_elec(Dataset):
                 3.5 * 30 * 24 * 6,
                 3.5 * 30 * 24 * 6 + 2 * 30 * 24 * 6,
                 3.5 * 30 * 24 * 6 + 4 * 30 * 24 * 6,
+            ]
+        elif self.data_set == "Binance":  # 7/2/2
+            # For 100%
+            # border1s = [
+            #     0,
+            #     7 * 30 * 24 * 6 - self.seq_len,
+            #     7 * 30 * 24 * 6 + 2 * 30 * 24 * 6 - self.seq_len,
+            # ]
+            # border2s = [
+            #     7 * 30 * 24 * 6,
+            #     7 * 30 * 24 * 6 + 2 * 30 * 24 * 6,
+            #     7 * 30 * 24 * 6 + 4 * 30 * 24 * 6,
+            # ]
+
+            # 50% for WEATHER but 100 for Binance
+            border1s = [
+                0,
+                7 * 15 * 24 * 6 - self.seq_len,
+                7 * 15 * 24 * 6 + 2 * 30 * 24 * 6 - self.seq_len,
+            ]
+            border2s = [
+                7 * 15 * 24 * 6,
+                7 * 15 * 24 * 6 + 2 * 30 * 24 * 6,
+                7 * 15 * 24 * 6 + 4 * 30 * 24 * 6,
             ]
         elif self.data_set == "TRAF":  # 7.5/3/3
             border1s = [

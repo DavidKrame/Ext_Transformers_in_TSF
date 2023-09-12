@@ -78,6 +78,7 @@ class Exp_Model(Exp_Basic):
             "ETTm1": Dataset_elec,
             "ETTm2": Dataset_elec,
             "WTH": Dataset_elec,
+            "Binance": Dataset_elec,
             "TRAF": Dataset_elec,
             "EXCH": Dataset_elec,
             "ECL": Dataset_elec,

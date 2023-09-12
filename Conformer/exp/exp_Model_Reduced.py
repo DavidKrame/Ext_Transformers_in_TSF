@@ -103,6 +103,7 @@ class Exp_Model:
             "ETTm1": Reduced_dataset_elec,
             "ETTm2": Reduced_dataset_elec,
             "WTH": Reduced_dataset_elec,
+            "Binance": Dataset_elec,
             "TRAF": Reduced_dataset_elec,
             "EXCH": Reduced_dataset_elec,
             "ECL": Reduced_dataset_elec,

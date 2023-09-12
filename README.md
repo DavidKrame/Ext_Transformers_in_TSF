@@ -50,3 +50,15 @@ sh scripts/MODEL/weather/Weather_Prediction.sh
 
 sh scripts/MODEL/weather/Weather_Freeze.sh
 ```
+For Binance and Binance_OTH :
+```sh 
+sh scripts/MODEL/binance/Binance.sh
+
+sh scripts/MODEL/binance/Binance_OTH.sh
+
+sh scripts/MODEL/binance/Binance_Continue.sh
+
+sh scripts/MODEL/binance/Binance_Prediction.sh
+
+sh scripts/MODEL/binance/Binance_Freeze.sh
+```

@@ -175,7 +175,7 @@ def dataset_parameters(args, dataset):
         "exchange": 8,
         "traffic": 862,
         "Weather": 21,
-        "Binance": 8,
+        "Binance": 2,
         "ili": 7,
         "flow": 1,
         "synthetic": 1,

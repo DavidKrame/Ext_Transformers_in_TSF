@@ -15,6 +15,7 @@ data_dict = {
     "ETTm1": Dataset_ETT_minute,
     "ETTm2": Dataset_ETT_minute,
     "ECL": Dataset_Custom,
+    "Binance": Dataset_Binance,
     "custom": Dataset_Custom_2,
     "Weather": Dataset_Weather,
     "binance": Dataset_Binance,

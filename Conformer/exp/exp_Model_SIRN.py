@@ -4,7 +4,6 @@ from data.data_loader import (
     Dataset_ETT_minute,
     Dataset_Custom,
     Dataset_Pred,
-    Dataset_elec,
 )
 from exp.exp_basic import Exp_Basic
 from models.model import Model

@@ -622,7 +622,7 @@ class Dataset_Binance(Dataset):
         root_path,
         flag="train",
         size=None,
-        data_path="binance.csv",
+        data_path="Binance.csv",
         dataset="Binance",
         inverse=False,
     ):

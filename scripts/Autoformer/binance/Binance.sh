@@ -17,7 +17,7 @@ do
       --is_training 1 \
       --root_path ./dataset/ \
       --file_name $file_name \
-      --data_path binance.csv \
+      --data_path Binance.csv \
       --model_id binance_96_$pred_len \
       --model $model_name \
       --data Binance \

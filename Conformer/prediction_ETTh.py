@@ -220,9 +220,9 @@ data_parser = {
     "Binance": {
         "data": "Binance.csv",
         "T": "OT",
-        "M": [8, 8, 8],
+        "M": [2, 2, 2],
         "S": [1, 1, 1],
-        "MS": [8, 8, 1],
+        "MS": [2, 2, 1],
         "freq": "h",
     },
     "ECL": {

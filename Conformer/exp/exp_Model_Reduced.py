@@ -87,7 +87,7 @@ class Exp_Model:
         # TRY WITH CHECKPOINT SIRN MANUALLY ADDED
         model.load_state_dict(
             torch.load(
-                os.path.join("./checkpoints_SIRN/init/", self.setting, "checkpoint.pth")
+                os.path.join("./checkpoints/init/", self.setting, "checkpoint.pth")
             )
         )
 

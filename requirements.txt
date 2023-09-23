@@ -1,6 +1,6 @@
+einops
 numpy
 matplotlib
-pandas
+pandas==1.5.3
 scikit-learn
 torch==1.9.0
-einops

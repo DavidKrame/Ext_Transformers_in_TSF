@@ -1,6 +1,6 @@
 # Scripts for each model  
 
-**In order to do experiments with a specific model, you have to change ``MODEL`` in ``V_Transformer``, ``Conformer``, ``Informer``, ``Autoformer``, ``FEDFormer`` or ``Pyraformer`` in all of these following scripts.**
+**In order to do experiments with a specific model, you have to change ``MODEL`` in ``V_Transformer``, ``Conformer``, ``Informer``, ``Autoformer``, ``FEDFormer``, ``Pyraformer`` or ``Reformer`` in all of these following scripts.**
 
 For Electricity and Electricity_OTH :
 ```sh

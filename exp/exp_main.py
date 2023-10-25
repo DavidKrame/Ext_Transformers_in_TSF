@@ -3,6 +3,7 @@ from exp.exp_basic import Exp_Basic
 from models import (
     Informer,
     Autoformer,
+    Reformer,
     FEDFormer,
     Transformer,
     DLinear,
@@ -35,6 +36,7 @@ class Exp_Main(Exp_Basic):
     def _build_model(self):
         model_dict = {
             "Autoformer": Autoformer,
+            "Reformer": Reformer,
             "Transformer": Transformer,
             "Informer": Informer,
             "FEDFormer": FEDFormer,
@@ -503,6 +505,7 @@ class Exp_Main_Continue:
     def _build_model(self):
         model_dict = {
             "Autoformer": Autoformer,
+            "Reformer": Reformer,
             "Transformer": Transformer,
             "Informer": Informer,
             "DLinear": DLinear,
@@ -976,6 +979,7 @@ class Exp_Main_Freeze:
     def _build_model(self):
         model_dict = {
             "Autoformer": Autoformer,
+            "Reformer": Reformer,
             "Transformer": Transformer,
             "Informer": Informer,
             "DLinear": DLinear,

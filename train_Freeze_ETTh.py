@@ -29,7 +29,7 @@ parser.add_argument(
     type=str,
     required=True,
     default="Transformer",
-    help="model name, options: [Autoformer, Informer, FEDFormer, Transformer]",
+    help="model name, options: [Autoformer, Reformer, Informer, FEDFormer, Transformer]",
 )
 parser.add_argument(
     "--file_name",

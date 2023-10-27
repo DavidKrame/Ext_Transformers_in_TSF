@@ -1,6 +1,6 @@
 # Scripts for each model  
 
-After cloning this repo, before doing something, you will need to go on the root of the generated folder in order to prepare your environment by installing the minum requirements. To do so, you must type in the terminal :  
+After cloning this repository, you must navigate to the root folder of the generated directory to set up your environment by installing the minimum requirements. To do this, navigate to the root of the cloned directory and enter this command in the terminal:  
 
 ```sh
 pip install -r requirements.txt

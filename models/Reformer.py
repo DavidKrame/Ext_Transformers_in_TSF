@@ -15,6 +15,14 @@ import numpy as np
 
 class Model(nn.Module):
     """
+    configs.d_ff
+    configs.activation
+    configs.d_model,
+    configs.embed,
+    configs.freq,
+    configs.dropout,
+    configs.output_attention
+
     Reformer with O(LlogL) complexity
     - It is notable that Reformer is not proposed for time series forecasting, in that it cannot accomplish the cross attention.
     - Here is only one adaption in BERT-style, other possible implementations can also be acceptable.
@@ -24,7 +32,6 @@ class Model(nn.Module):
 
     def __init__(self, configs):
         super(Model, self).__init__()
-        self.pred_len = configs.pred_len
         self.pred_len = configs.pred_len
         self.output_attention = configs.output_attention
 
@@ -45,7 +52,8 @@ class Model(nn.Module):
                         configs.d_model,
                         configs.n_heads,
                         bucket_size=4,
-                        n_hashes=configs.n_hashes,
+                        # n_hashes=configs.n_hashes,
+                        n_hashes=4,
                     ),
                     configs.d_model,
                     configs.d_ff,

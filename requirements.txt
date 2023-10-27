@@ -4,3 +4,4 @@ matplotlib
 pandas==1.5.3
 scikit-learn
 torch==1.9.0
+reformer_pytorch

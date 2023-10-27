@@ -1,5 +1,17 @@
 # Scripts for each model  
 
+After cloning this repo, before doing something, you will need to go on the root of the generated folder in order to prepare your environment by installing the minum requirements. To do so, you must type in the terminal :  
+
+```sh
+pip install -r requirements.txt
+```
+
+If you want to install everything, use :  
+
+```sh
+pip install -r requirements_extended.txt
+```
+
 **In order to do experiments with a specific model, you have to change ``MODEL`` in ``V_Transformer``, ``Conformer``, ``Informer``, ``Autoformer``, ``FEDFormer``, ``Pyraformer`` or ``Reformer`` in all of these following scripts.**
 
 For Electricity and Electricity_OTH :

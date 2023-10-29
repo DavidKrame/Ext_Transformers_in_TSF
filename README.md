@@ -1,4 +1,9 @@
 # Scripts for each model  
+Fist, you have to clone this repository. To do that, you must type :  
+
+```sh
+git clone https://github.com/DavidKrame/Ext_Transformers_in_TSF
+```
 
 After cloning this repository, you must navigate to the root folder of the generated directory to set up your environment by installing the minimum requirements. To do this, navigate to the root of the cloned directory and enter this command in the terminal:  
 
